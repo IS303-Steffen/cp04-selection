@@ -24,33 +24,86 @@ clear_screen()
     Third:      or
 '''
 
-a = True
-b = True
-c = False
-d = True
+'''
 
-# this is confusing. Stare at it. it evaluates the ands before the ors
-# what will print out?
-if a == True and b == True or c == True and d == True:
-    print("ex1: Condition met")
+The scenario:
+A student can win a prize based on a few different combinations of conditions.
+We have 4 conditions we will evaluate:
+1. grades_above_90: Did the student score above 90 on average in their classes?
+2. attendance_above_90: Did the student attend more than 90% of the classes?
+3. extracurricular_participation: Did the student participate in extracurricular activities?
+4. no_behavior_issues: Did the student have no major behavior issues?
+
+Rule: No student can win a prize if they have behavior issues.
+We check the other conditions ONLY if the student has no behavior issues.
+
+'''
+
+# Example 1:
+# A student has everything they need, except they have behavior issues.
+
+grades_above_90 = True
+attendance_above_90 = True    
+extracurricular_participation = True  
+no_behavior_issues = False   
+
+# Example 1: 
+# This is written without parentheses. Is it working correctly?
+if no_behavior_issues == True and grades_above_90 == True or attendance_above_90 == True and extracurricular_participation == True:
+    print("ex1: Student wins the prize! (incorrect logic)")
 else:
-    print("ex1: Condition not met")
+    print("ex1: Student does not win the prize. (incorrect logic)")
 
-# I recommend using parentheses ALWAYS when mixing ands and ors
-# the below example is identical to the first one
-if (a == True and b == True) or (c == True and d == True):
-    print("ex2: Condition met")
+# Example 1: Corrected with parentheses.
+# Now, we correctly group the conditions to match our logic: 
+
+if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
+    print("ex2: Student wins the prize! (correct logic)")
 else:
-    print("ex2: Condition not met")
+    print("ex2: Student does not win the prize. (correct logic)")
 
 
-# what about this one?
-if (a == True or b == True) and (c == True and d == True):
-    print("ex3: Condition met")
+# Example 2: A student meets the attendance and extracurricular condition, but has behavior issues.
+grades_above_90 = True
+attendance_above_90 = False
+extracurricular_participation = False
+no_behavior_issues = False
+
+if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
+    print("ex2: Student wins the prize!")
 else:
-    print("ex3: Condition not met")
+    print("ex2: Student does not win the prize")
 
+# Example 3: A student meets the attendance condition, and has no behavior issues.
+grades_above_90 = False
+attendance_above_90 = True
+extracurricular_participation = False
+no_behavior_issues = True
 
-# practice:
-# if a, b, or c are False AND d is not False print ("this worked") otherwise, print "didn't work"
+if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
+    print("ex3: Student wins the prize!")
+else:
+    print("ex3: Student does not win the prize")
+
+# Example 4: A student meets the attendance condition and extracurricular option, and has no behavior issues.
+grades_above_90 = False
+attendance_above_90 = True
+extracurricular_participation = True
+no_behavior_issues = True
+
+if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
+    print("ex4: Student wins the prize!")
+else:
+    print("ex4: Student does not win the prize")
+
+# PRACTICE:
+# Let's change the rules:
+# Make it so a student can win a prize as long as they have at least one of: grades above 90, attendance above 90, extracurricular activities.
+# But they still can't have behavioral issues in any case
+
+# evaluate the student below and write the condition:
+grades_above_90 = False
+attendance_above_90 = False
+extracurricular_participation = True
+no_behavior_issues = True
 
