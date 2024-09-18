@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,100 +12,134 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
-
-# or, and, & not aren't too complicated when used by themselves, but it can get a little trickier when combined together.
-
-# something to keep in mind is that without parentheses, python has an order that it evaluates the operators:
+# ===================
+# COMBINING OPERATORS
+# ===================
 
 '''
-    First:      not
-    Second:     and
-    Third:      or
+OVERVIEW
+--------
+or, and, & not aren't too complicated when used by themselves,
+but it can get a little trickier when combined together.
+
+Keep in mind that python has an order that it evaluates
+the operators:
+
+    1:  not
+    2:  and
+    3:  or
+
+BUT that order can be overridden by using parentheses.
+Use parentheses to group conditions together to make sure they are
+evaluated correctly
 '''
 
-'''
+# SCENARIO FOR EXAMPLES BELOW:
+# A student can win a prize based on a few combinations of conditions.
+# We have 4 conditions we will evaluate:
+#   - grades_above_90
+#   - attendance_above_90
+#   - extracurriculars
+#   - no_behavior_issues
 
-The scenario:
-A student can win a prize based on a few different combinations of conditions.
-We have 4 conditions we will evaluate:
-1. grades_above_90: Did the student score above 90 on average in their classes?
-2. attendance_above_90: Did the student attend more than 90% of the classes?
-3. extracurricular_participation: Did the student participate in extracurricular activities?
-4. no_behavior_issues: Did the student have no major behavior issues?
+# Rules:
+#   - No student can win a prize if they have behavior issues.
+#   - A student can win a prize if they have grades_above_90 OR
+#     if they have both attendance_above_90 AND extracurriculars.
 
-Rule: No student can win a prize if they have behavior issues.
-We check the other conditions ONLY if the student has no behavior issues.
-
-'''
-
-# Example 1:
+# SITUATION 1:
 # A student has everything they need, except they have behavior issues.
-
 grades_above_90 = True
 attendance_above_90 = True    
-extracurricular_participation = True  
+extracurriculars = True  
 no_behavior_issues = False   
 
-# Example 1: 
-# This is written without parentheses. Is it working correctly?
-if no_behavior_issues == True and grades_above_90 == True or attendance_above_90 == True and extracurricular_participation == True:
-    print("ex1: Student wins the prize! (incorrect logic)")
+# S1.1 - WITHOUT PARENTHESES: 
+# This is written without parentheses separating the conditions.
+# Stare at it for a minute. Is it working correctly?
+
+if (no_behavior_issues == True and grades_above_90 == True
+    or attendance_above_90 == True and extracurriculars == True):
+    print("ex1.1: Student wins the prize! (incorrect logic)")
 else:
-    print("ex1: Student does not win the prize. (incorrect logic)")
+    print("ex1.1: Student does not win the prize. (incorrect logic)")
 
-# Example 1: Corrected with parentheses.
-# Now, we correctly group the conditions to match our logic: 
+'''
+TIP
+---
+Yes there are parentheses at the beginning and end of the if conditions.
+That is to make it so I can put the conditions on multiple lines of code.
+The point here is that there aren't parentheses separating the
+various conditions
+'''
 
-if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
-    print("ex2: Student wins the prize! (correct logic)")
+# S1.2 - USING PARENTHESES: 
+# Now, we correctly group the conditions to match our logic
+
+if (no_behavior_issues == True
+    and (grades_above_90 == True or (attendance_above_90 == True
+                                     and extracurriculars == True))):
+    print("ex1.2: Student wins the prize! (correct logic)")
 else:
-    print("ex2: Student does not win the prize. (correct logic)")
+    print("ex1.2: Student does not win the prize. (correct logic)")
 
+# SITUATION 2:
+# A student meets the attendance and extracurricular condition,
+# but has behavior issues.
 
-# Example 2: A student meets the attendance and extracurricular condition, but has behavior issues.
 grades_above_90 = True
 attendance_above_90 = False
-extracurricular_participation = False
+extracurriculars = False
 no_behavior_issues = False
 
-if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
+if (no_behavior_issues == True
+    and (grades_above_90 == True or (attendance_above_90 == True
+                                     and extracurriculars == True))):
     print("ex2: Student wins the prize!")
 else:
     print("ex2: Student does not win the prize")
 
-# Example 3: A student meets the attendance condition, and has no behavior issues.
+# SITUATION 3:
+# A student meets the attendance condition, and has no behavior issues.
 grades_above_90 = False
 attendance_above_90 = True
-extracurricular_participation = False
+extracurriculars = False
 no_behavior_issues = True
 
-if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
+if (no_behavior_issues == True
+    and (grades_above_90 == True or (attendance_above_90 == True
+                                     and extracurriculars == True))):   
     print("ex3: Student wins the prize!")
 else:
     print("ex3: Student does not win the prize")
 
-# Example 4: A student meets the attendance condition and extracurricular option, and has no behavior issues.
+# SITUATION 4:
+# A student meets the attendance condition and extracurricular option,
+# and has no behavior issues.
 grades_above_90 = False
 attendance_above_90 = True
-extracurricular_participation = True
+extracurriculars = True
 no_behavior_issues = True
 
-if no_behavior_issues == True and (grades_above_90 == True or (attendance_above_90 == True and extracurricular_participation == True)):
+if (no_behavior_issues == True
+    and (grades_above_90 == True or (attendance_above_90 == True
+                                     and extracurriculars == True))): 
     print("ex4: Student wins the prize!")
 else:
     print("ex4: Student does not win the prize")
 
-# PRACTICE:
+# 1. MATCH IF STATEMENT TO NEW LOGIC:
 # Let's change the rules:
-# Make it so a student can win a prize as long as they have at least one of: grades above 90, attendance above 90, extracurricular activities.
-# But they still can't have behavioral issues in any case
-
-# evaluate the student below and write the condition:
+# Make it so a student can win a prize as long as they have at least one of:
+#   - grades above 90
+#   - attendance above 90
+#   - extracurricular activities.
+# But they still can't have behavioral issues in any case.
+# evaluate the student below and write an if statement that accurately 
+# reflects this logic:
 grades_above_90 = False
 attendance_above_90 = False
-extracurricular_participation = True
+extracurriculars = True
 no_behavior_issues = True
+
 

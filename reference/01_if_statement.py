@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,59 +12,99 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
-
-# by combining comparisons with the if statement,
-# you control what code gets executed
-
-#structure of if statement:
-'''
-    must start with lowercase if
-    then you must have a conditional statement
-        (something that results in TRUE or FALSE). Usually a comparison
-    a colon : following the conditional statement
-    Then indent in (press tab) on the next line.
-    Anything indented from the "if" will be part of the if statement
-    Outdent to exit the "if" statement.
+# =========================
+# IF STATEMENTS (SELECTION)
+# =========================
 
 '''
+OVERVIEW
+--------
+By default, code runs in "sequence", meaning it runs line by line from the top
+down. When using if statements, you are using "selection". This means you make 
+decisions or choices about which lines of code to run based on conditions.
 
-# Write a program that prints "congrats!"
-# but only if num1 is not equal to num2
+By combining comparisons (<, ==, etc.) with operators in if statements
+your code can become much more dynamic and respond to different situations.
 
-num1 = 10
-num2 = 20
+STRUCTURE
+---------
+if statements:
+    - Start with a lowercase if.
+    - Follow with a conditional statement
+      (something that results in True or False) and then a colon.
+    - Anything indented on the line after the colon will be part
+      of the if statement. Outdent to exit the if statement.
 
+EXAMPLE
+-------
+if x == y:
+    print("Example text")
+    print("This is also part of the if statement")
 
-if num1 != num2:
-    print("congrats!")
-    print("another line of congrats")
-
-# Note, you can also do a shorthand version.
-# put a colon after the conditional statement, then the code you want. You can add commas to put more lines.
-# I don't recommend this, especially for longer if statements (which we'll get into soon)
-if num1 != num2: print("congrats! shorthand") , print("another line of congrats shorthand")
-
-
-# PRACTICE:
+print("This is outdented. Therefore, not part of the if statement")
 '''
-    Check if a number stored in a variable is equal to 5.
-    If it is, say "Wow it is equal to 5". No matter what the number
-    is, print out the value of the number afterwards.
+
+# 1. COMPARE 2 NUMBERS:
+# Write an if statement that prints "They are the same!" if num_1 and num_2
+# are equivalent. Feel free to mess with the values and see what happens.
+
+num_1 = 10
+num_2 = 10
+
+if num_1 == num_2:
+    print("They are the same!")
+
+# 2. COMPARE 2 NUMBERS (AGAIN):
+# Write an if statement that prints "They are different!" if num_3 and num_4
+# are different. Feel free to mess with the values and see what happens.
+# print out a message saying "This will always print." whether or not num_3
+# and num_4 are different.
+
+num_3 = 10
+num_4 = 20
+
+if num_3 != num_4:
+    print("They are the different!")
+
+print("This will always print.")
+
+
+'''
+TIP
+---
+When using booleans with if statements, you can just put the variable name
+without any other comparison operators. Because booleans already represent
+either True or False there's no need to add anything else. 
 '''
 
-iVarExample = 7
-if iVarExample == 5:
-    print("it is equal to 5")
-print(iVarExample)
-
-
-# note, when working with booleans, you can just put the variable name with nothing else.
-# if it is True, it will run, if False it will skip it:
+# 3. USE A BOOLEAN:
+# If example_boolean is True, write out
+# "the boolean must have been True."
 
 example_boolean = True
 
 if example_boolean:
-    print("The boolean must have been true.")
+    print("The boolean must have been True.")
+
+'''
+IF STATEMENT ON SINGLE LINE
+---------------------------
+You can write an if statement on one line to save space.
+This might be convenient for a very short if statement, but I generally
+don't recommend for anything longer than very simple lines of code because
+it can become harder to read.
+
+EXAMPLE
+-------
+if num_1 == num_2: print("Example first line"), print("Example last line")
+
+'''
+
+# 4. WRITE IF STATEMENT ON A SINGLE LINE:
+# If num_5 is greater than num_6, print out "num_5 is bigger"
+# put the print statement on the same line as the if statement.
+
+num_5 = 2
+num_6 = 1
+
+if num_5 > num_6: print("num_5 is bigger")

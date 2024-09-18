@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,36 +12,53 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
+# ======================
+# LOGICAL OPERATORS: NOT
+# ======================
 
 '''
-    and     every statement must be true
-    or      at least one statement must be true
-    not     changes true to false and false to true
+OVERVIEW
+--------
+    and     every condition must be true
+    or      at least one condition must be true 
+
+We'll go over "or" in this file. When using or, as long as at least one of 
+the conditions in the if/elif statement is True, then the entire statement
+is evaluated as True.
+
+STRUCTURE
+---------
+and:
+    - just put "or" between every logical statement in your if or elif
+
+EXAMPLE
+-------
+if x == y or y != z:
+    print("At least one condition met.")
 '''
-######
-## or
-######
 
-iNum1 = 3
-iNum2 = 12
+num_1 = 3
+num_2 = 12
 
-# print something if iNum doesn't equal 2 or iNum2 is above 10
-if iNum1 != 2 or iNum2 > 10:
+# 1. PUT 2 CONDITIONS IN ONE IF STATEMENT
+# Print a message if num_1 doesn't equal 2 or if num_2 is above 10
+if num_1 != 2 or num_2 > 10:
     print("First: both conditions were correct")
 
-# print message if iNum doeesn't equal 3 or iNum2 is above 10
-if iNum1 != 3 or iNum2 > 10:
+# 2. PUT 2 CONDITIONS IN ONE IF STATEMENT (AGAIN)
+# Print a message if iNum doesn't equal 3 or num_2 is above 10
+if num_1 != 3 or num_2 > 10:
     print("Second: one condition was correct")
 
-# print message if iNum doeesn't equal 3 or iNum2 doesn't equal 12
-if iNum1 != 3 or iNum2 != 12:
-    print("third: you shouldn't be seeing this")
+# 3. PUT 2 CONDITIONS IN ONE IF STATEMENT (AGAIN)
+# Print message if iNum doesn't equal 3 or num_2 doesn't equal 12
+if num_1 != 3 or num_2 != 12:
+    print("Third: you shouldn't be seeing this")
 
-# like and, you can do as many ors as you want.
-if iNum1 != 3 or iNum2 > 10 or iNum1 < iNum2 or iNum2 == 12:
+# 4. PUT 3 CONDITIONS IN ONE IF STATEMENT (AGAIN)
+# Write any if statement you want, but use 3 "or" operators.
+# Print something if at least one is true.
+if num_1 != 3 or num_2 > 10 or num_1 < num_2 or num_2 == 12:
     print("Fourth: at least one condition is correct")
 
 

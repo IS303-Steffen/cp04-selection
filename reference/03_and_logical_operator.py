@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,37 +12,48 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
+# ======================
+# LOGICAL OPERATORS: AND
+# ======================
 
-# So far with if statements, we've just checked if one logical statement is true
-    # e.g. iNum1 >= iNum2
-
-# However, we often want to check for multiple conditions simultaneously
-# or only need one of several statements to be true
-# logical operators and / or help with this
-# not reverses false or true
 '''
-    and     every statement must be true
-    or      at least one statement must be true
-    not     changes true to false and false to true
+OVERVIEW
+--------
+So far, we've just checked if a single condition is True, like:
+    x > y
+
+But you can add other logical operators to add multiple conditions:
+
+    and     every condition must be true
+    or      at least one condition must be true 
+
+We'll go over and in this file.
+
+STRUCTURE
+---------
+and:
+    - just put "and" between every logical statement in your if or elif
+
+EXAMPLE
+-------
+if x == y and y != z:
+    print("All conditions met.")
 '''
 
-######
-## and
-######
-iNum1 = 3
-iNum2 = 12
-
-# Print message if iNum1 doesn't equal 1 and if iNum2 is above 10
-if iNum1 != 2 and iNum2 > 10:
+num_1 = 3
+num_2 = 12
+# 1. PUT 2 CONDITIONS IN ONE IF STATEMENT
+# Print a message if num_1 doesn't equal 2 and if num_2 is above 10
+if num_1 != 2 and num_2 > 10:
     print("First: both conditions were correct")
 
-# Print message if iNum1 doesn't equal 3 and if iNum2 is above 10
-if iNum1 != 3 and iNum2 > 10:
+# 2. PUT 2 CONDITIONS IN ONE IF STATEMENT (AGAIN)
+# Print a message if num_1 doesn't equal 3 and if num_2 is above 10
+if num_1 != 3 and num_2 > 10:
     print("Second: you shouldn't be seeing this")
 
-# try writing something with 3 ands.
-if iNum1 != 2 and iNum2 > 10 and iNum1 < iNum2 and iNum2 == 12:
+# 3. PUT 3 CONDITIONS IN ONE IF STATEMENT
+# Write any if statement you want, but use 3 "and" operators.
+# Print something if they are all true.
+if num_1 != 2 and num_2 > 10 and num_1 < num_2 and num_2 == 12:
     print("Third: all conditions were correct")

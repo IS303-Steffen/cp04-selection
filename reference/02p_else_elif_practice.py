@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,25 +12,27 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
+# ===========================
+# IF, ELIF, AND ELSE PRACTICE
+# ===========================
 
-# PRACTICE:
-'''
-    Ask the user to enter their favorite day of the week.
-        If it is Monday, print "wow, early weekday"
-        If it is Wednesday print "wow, midweek!"
-        if it is Saturday print "weekend, woo!"
-        if it is any other day, print "that day's pretty good too"
-'''
-sInput = input("What is your favorite day of the week? ")
+# 1. USE IF, ELIF, AND ELSE WITH INPUT():
+# Ask the user to enter their favorite day of the week.
+# If it is Monday, print "wow, early weekday"
+# If it is Wednesday print "wow, midweek!"
+# If it is Saturday print "weekend, woo!"
+# If it is any other day, print "that day's pretty good too"
 
-if sInput == "Monday":
+# CHALLENGE: Try and make it so your code works no matter how the
+#            the day of the week is capitalized.
+
+fav_day = input("What is your favorite day of the week? ").lower()
+
+if fav_day == "monday":
     print('wow, early weekday!')
-elif sInput == "Wednesday":
+elif fav_day == "wednesday":
     print("wow midweek")
-elif sInput == "Saturday":
+elif fav_day == "saturday":
     print("weekend woo!")
 else:
     print("That's pretty good too")
