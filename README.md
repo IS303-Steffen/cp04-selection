@@ -1,5 +1,8 @@
 #### Class Practice
 # Selection (If Statement)
+The `practice` folder contains instructions without any answers. The `reference` folder contains the same code but with all the answers.
+
+In each file, `'''triple quote comments'''` contain explanations of concepts. `# single line comments` contain instructions for practice problems.
 
 ### Topics covered:
 - if statement
